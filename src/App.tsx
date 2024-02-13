@@ -14,10 +14,13 @@ import {
   Input,
 } from '@chakra-ui/react';
 
+
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+
+
+import Web3 from 'web3';
 import { ethers } from 'ethers';
 import { useAccount, useContractRead, useContractWrite } from 'wagmi';
-import AnunakiNFTRewardsStaking from './AnunakiNFTRewardsStaking.json'; // Replace with the correct path
 
 import abiFile from './abiFile.json';
 import './styles.css'; // Reference to the external CSS file
@@ -30,7 +33,7 @@ const STAKING_CONTRACT_ADDRESS = '0xYourStakingContractAddress'; // Replace with
 const STAKING_CONTRACT_ABI = './AnunakiNFTRewardsStaking.json';
 
 const CONTRACT_ADDRESS = '0x03965dEc6f765ddCA73282065B9646950a613618';
-const getExplorerLink = () => `https://bscscan.com/token/${CONTRACT_ADDRESS}`;
+const getExplorerLink = () => `https://scan.maxxchain.org/token/${CONTRACT_ADDRESS}`;
 const getOpenSeaURL = () => `https://testnets.opensea.io/assets/goerli/${CONTRACT_ADDRESS}`;
 
 function App() {
@@ -118,7 +121,6 @@ function App() {
   return (
     <>
       <header>
-        <img src={MainTextLogo} alt="Logo" className="logo" />
         <div className="connect-button">
           <ConnectButton />
         </div>
@@ -135,13 +137,7 @@ function App() {
       >
         <div className="mainboxwrapper">
           <Container className="container" paddingY="4">
-            <Tabs isFitted variant="enclosed">
-              <TabList>
-                <Tab>Anunaki NFT</Tab>
-              </TabList>
 
-              <TabPanels>
-                <TabPanel>
 
 
                 <div>
@@ -177,7 +173,7 @@ function App() {
                     textColor='white'
                     bg='#fcbb63'
                     _hover={{
-                      bg: '#fffda4',
+                      bg: '#ea971c',
                     }}
                     onClick={handleDecrement}
                     disabled={!isConnected || mintLoading || mintAmount === 1}
@@ -192,7 +188,7 @@ function App() {
                     textColor='white'
                     bg='#fcbb63'
                     _hover={{
-                      bg: '#fffda4',
+                      bg: '#ea971c',
                     }}
                     onClick={handleIncrement}
                     disabled={!isConnected || mintLoading || mintAmount === 60}
@@ -211,7 +207,7 @@ function App() {
                     textColor='white'
                     bg='#fcbb63'
                     _hover={{
-                      bg: '#fffda4',
+                      bg: '#ea971c',
                     }}
                   >
                     {isConnected ? `Mint ${mintAmount} Now` : ' Mint on (Connect Wallet)'}
@@ -240,12 +236,11 @@ function App() {
                   </Text>
                 )}
 
-                </TabPanel>
-
-              </TabPanels>
-            </Tabs>
             <Text className="paragraph1" style={{ color: 'white', padding: '20px', textAlign: 'center' }}>
-              &copy; Anunaki DeFi Platform 2023. All rights reserved.
+              Anunaki NFT DeFi Platform 2024. All rights reserved.
+            </Text>
+            <Text className="contractaddr" style={{ color: 'white', padding: '14px', textAlign: 'center' }}>
+              © InHaus Development 2024
             </Text>
           </Container>
         </div>

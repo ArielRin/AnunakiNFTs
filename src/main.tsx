@@ -49,7 +49,7 @@ const { chains, provider } = configureChains(
     jsonRpcProvider({
       rpc: () => {
         return {
-          http: "https://bsc-dataseed.binance.org/",
+          http: "https://mainrpc4.maxxchain.org/",
         };
       },
     }),
@@ -58,7 +58,7 @@ const { chains, provider } = configureChains(
 );
 
 const { connectors } = getDefaultWallets({
-  appName: "Staking Locks Dapp 2024",
+  appName: "AnunakiNFT Dapp 2024",
   chains,
 });
 
@@ -74,7 +74,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <WagmiConfig client={wagmiClient}>
         <RainbowKitProvider modalSize="compact" chains={chains}
         theme={darkTheme({
-              accentColor: '#e79000',
+              accentColor: '#fcbb63',
               accentColorForeground: 'white',
               borderRadius: 'small',
               fontStack: 'system',

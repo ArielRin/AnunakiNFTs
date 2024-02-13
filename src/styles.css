@@ -31,7 +31,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: #222; /* Change the background color as needed */
+  background-color: #000; /* Change the background color as needed */
   color: white;
 }
 
@@ -64,6 +64,7 @@ header {
     padding: 2px;
     flex-direction: column;
     margin-top: 2px;
+}
 
 .bodywrapper {
   display: flex;
@@ -71,6 +72,7 @@ header {
   align-items: center;
   height: 100vh;
 }
+
 .container {
   width: 80%;
   max-width: 600px; /* Adjust the maximum width as needed */
