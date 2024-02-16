@@ -15,30 +15,25 @@ import {
 } from '@chakra-ui/react';
 
 
-import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 
 import Web3 from 'web3';
 import { ethers } from 'ethers';
 import { useAccount, useContractRead, useContractWrite } from 'wagmi';
 
-import abiFile from './abiFile.json';
-import './styles.css'; // Reference to the external CSS file
+import nftMintAbi from './nftMintAbi.json';
+import './BMTstyles.css'; // Reference to the external CSS file
 
 import backgroundGif from './bkgmf.png';
 import HausLogo1 from './logo.png';
 import MainTextLogo from './textLogo.png';
 
-import mikeyFBkg from './BG.png';
 
-const STAKING_CONTRACT_ADDRESS = '0xYourStakingContractAddress'; // Replace with your actual contract address
-const STAKING_CONTRACT_ABI = './AnunakiNFTRewardsStaking.json';
+const NFT_CONTRACT_ADDRESS = '0x074EDe9bB8F37e1D902D988769D2f1af0F929C23';
+const getExplorerLink = () => `https://scan.maxxchain.org/token/${NFT_CONTRACT_ADDRESS}`;
 
-const CONTRACT_ADDRESS = '0x074EDe9bB8F37e1D902D988769D2f1af0F929C23';
-const getExplorerLink = () => `https://scan.maxxchain.org/token/${CONTRACT_ADDRESS}`;
-const getOpenSeaURL = () => `https://testnets.opensea.io/assets/goerli/${CONTRACT_ADDRESS}`;
 
-function App() {
+function NFTMintingComponent() {
   const account = useAccount();
   const [contractName, setContractName] = useState('');
   const [totalSupply, setTotalSupply] = useState(0);
@@ -50,8 +45,8 @@ function App() {
 
 
   const contractConfig = {
-    addressOrName: CONTRACT_ADDRESS,
-    contractInterface: abiFile,
+    addressOrName: NFT_CONTRACT_ADDRESS,
+    contractInterface: nftMintAbi,
   };
 
   const [imgURL, setImgURL] = useState('');
@@ -101,7 +96,7 @@ function App() {
   async function fetchContractData() {
     try {
       const provider = new ethers.providers.JsonRpcProvider('https://mainrpc4.maxxchain.org/');
-      const contract = new ethers.Contract(CONTRACT_ADDRESS, abiFile, provider);
+      const contract = new ethers.Contract(NFT_CONTRACT_ADDRESS, nftMintAbi, provider);
       const name = await contract.name();
       const supply = await contract.totalSupply();
       setContractName(name);
@@ -122,11 +117,6 @@ function App() {
 
   return (
     <>
-      <header>
-        <div className="connect-button">
-          <ConnectButton />
-        </div>
-      </header>
 
       <div
         className="wrapper"
@@ -161,7 +151,7 @@ function App() {
                   </Text>
                   <Text className="contractaddr" style={{ padding: '10px', textAlign: 'center', fontWeight: 'bold' }}>
                     <Link isExternal href={getExplorerLink()}>
-                      {CONTRACT_ADDRESS}
+                      {NFT_CONTRACT_ADDRESS}
                     </Link>
                   </Text>
                 </div>
@@ -242,12 +232,6 @@ function App() {
                   </Text>
                 )}
 
-            <Text className="paragraph1" style={{ color: 'white', padding: '20px', textAlign: 'center' }}>
-              Anunaki NFT DeFi Platform 2024. All rights reserved.
-            </Text>
-            <Text className="contractaddr" style={{ color: 'white', padding: '14px', textAlign: 'center' }}>
-              © InHaus Development 2024
-            </Text>
           </Container>
         </div>
       </div>
@@ -255,4 +239,4 @@ function App() {
   );
 }
 
-export default App;
+export default NFTMintingComponent;

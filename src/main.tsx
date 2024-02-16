@@ -74,7 +74,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <WagmiConfig client={wagmiClient}>
         <RainbowKitProvider modalSize="compact" chains={chains}
         theme={darkTheme({
-              accentColor: '#fcbb63',
+              accentColor: '#4656a3',
               accentColorForeground: 'white',
               borderRadius: 'small',
               fontStack: 'system',
